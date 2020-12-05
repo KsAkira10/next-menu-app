@@ -1,0 +1,40 @@
+{
+  "name": "@akira/next-menu-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "lerna": "lerna",
+    "bootstrap": "yarn lerna bootstrap",
+    "dev:inspect": "NODE_OPTIONS='--inspect' lerna run dev --parallel",
+    "dev": "lerna run dev --parallel",
+    "dev:cms": "yarn workspace @akira/cms-menu dev",
+    "dev:app": "yarn workspace @akira/app-menu dev",
+    "build": "lerna run build --parallel",
+    "build:cms": "yarn workspace @akira/cms-menu build",
+    "build:app": "yarn workspace @akira/app-menu build",
+    "prestart": "NODE_ENV=production yarn build",
+    "start": "NODE_ENV=production lerna run start --parallel",
+    "start:cms": "yarn workspace @akira/cms-menu start",
+    "start:app": "yarn workspace @akira/app-menu start"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-import-resolver-typescript": "^2.3.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.2.0",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^2.5.0",
+    "lerna": "^3.22.1",
+    "prettier": "^2.2.1",
+    "yarn": "^1.22.10"
+  }
+}

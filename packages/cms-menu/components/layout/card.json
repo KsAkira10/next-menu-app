@@ -1,0 +1,25 @@
+{
+  "collectionName": "DesignSystem",
+  "info": {
+    "name": "Card",
+    "icon": "address-card"
+  },
+  "options": {},
+  "attributes": {
+    "description": {
+      "type": "text",
+      "default": "Aproveite o meu código exclusivo que te dá frete grátis na Riachuelo! - *${cuponCode}*"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}

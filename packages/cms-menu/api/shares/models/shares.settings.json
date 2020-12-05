@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "Shares",
+  "info": {
+    "name": "Shares"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Promotion": {
+      "type": "component",
+      "repeatable": true,
+      "component": "layout.promotion"
+    },
+    "Title": {
+      "type": "string"
+    },
+    "Section": {
+      "type": "integer",
+      "max": 99
+    }
+  }
+}

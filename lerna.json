@@ -1,0 +1,9 @@
+{
+  "name": "@akira/root",
+  "packages": [
+    "packages/*"
+  ],
+  "version": "independent",
+  "npmClient": "yarn",
+  "useWorkspaces": true
+}

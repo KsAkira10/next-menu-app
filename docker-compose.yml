@@ -1,0 +1,68 @@
+version: '3'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    environment:
+      - 'MONGO_INITDB_ROOT_USERNAME=strapi'
+      - 'MONGO_INITDB_ROOT_PASSWORD=strapi'
+      - 'MONGO_INITDB_DATABASE=strapidb'
+    ports:
+      - '27017:27017'
+    deploy:
+      resources:
+        limits:
+          cpus: '0.333'
+          memory: 333M
+    networks:
+      - strapi-network
+
+  strapi:
+    build: ./packages/cms-menu
+    image: cms-menu:latest
+    container_name: strapi
+    environment:
+      - 'DATABASE_CLIENT=mongo'
+      - 'DATABASE_NAME=strapidb'
+      - 'DATABASE_HOST=mongodb'
+      - 'DATABASE_PORT=27017'
+      - 'DATABASE_USERNAME=strapi'
+      - 'DATABASE_PASSWORD=strapi'
+      - 'DATABASE_URI=mongodb://strapi:strapi@mongodb:27017/strapidb'
+      - 'NODE_ENV=production'
+    ports:
+      - '1337:1337'
+    deploy:
+      resources:
+        limits:
+          cpus: '0.333'
+          memory: 333M
+    networks:
+      - strapi-network
+    depends_on:
+      - mongodb
+
+  nextjs:
+    build: ./packages/app-menu
+    image: app-menu:latest
+    container_name: nextjs
+    environment:
+      - 'NEXT_PUBLIC_API_URL=http://strapi:1337'
+    ports:
+      - '5000:3000'
+    deploy:
+      resources:
+        limits:
+          cpus: '0.333'
+          memory: 333M
+    volumes:
+      - ./node_modules:/node_modules
+    networks:
+      - strapi-network
+    depends_on:
+      - strapi
+
+networks:
+  strapi-network:
+    driver: bridge

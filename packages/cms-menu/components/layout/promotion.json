@@ -1,0 +1,20 @@
+{
+  "collectionName": "DesignSystem",
+  "info": {
+    "name": "Promotion",
+    "icon": "ad"
+  },
+  "options": {},
+  "attributes": {
+    "storie": {
+      "type": "component",
+      "repeatable": false,
+      "component": "layout.card"
+    },
+    "feed": {
+      "type": "component",
+      "repeatable": false,
+      "component": "layout.card"
+    }
+  }
+}
